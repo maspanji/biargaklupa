@@ -10,6 +10,7 @@ class Registrasi extends CI_Controller {
         $data['page_title'] = "Registasi Baru";
         $this->load->view('page_head', $data);
         $this->load->view('registrasi_baru');
+        $this->load->view('page_modal');
         $this->load->view('page_foot');
     }
     

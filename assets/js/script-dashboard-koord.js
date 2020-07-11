@@ -11,7 +11,7 @@ $('#submit-button-periode').on("click", function (e) {
         var url = site_url + "/koord/periode/simpan_baru";
         $.post(url, {periode: prd, keterangan: ket})
                 .done(function (data) {
-                     alert("data");   
+                     alert("data dari server: "+data);   
                 });
     } else {
         alert("ada kesalahan");
