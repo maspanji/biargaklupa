@@ -14,6 +14,6 @@ $('#submit-button-periode').on("click", function (e) {
                      alert("data");   
                 });
     } else {
-        alert("hello");
+        alert("ada kesalahan");
     }
 })

@@ -19,10 +19,9 @@
                 <div class="form-group row">
                     <label for="input-ket-periode" class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-5">
-                        <button type="button" class="btn btn-primary"id="submit-button-periode" > Submit</button>
+                        <button type="button" class="btn btn-primary" id="submit-button-periode" >Submit</button>
                     </div>
                 </div>                   
-                
             </form>
         </div>
     </div>

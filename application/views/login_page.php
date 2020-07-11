@@ -1,14 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Login </title>
-        <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" />
-    </head>
-    <body>
-        
         <div class="container" style="margin-top: 20px">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -41,8 +30,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>    
             </div>
         </div>
-        <script src="<?php echo base_url() ?>/assets/js/jquery-3.5.0.min.js" />
-        <script src="<?php echo base_url() ?>/assets/js/popper.min.js" />
-        <script src="<?php echo base_url() ?>/assets/js/bootstrap.min.js" />
-    </body>
-</html>
