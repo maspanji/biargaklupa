@@ -19,7 +19,9 @@ class Registrasi extends CI_Controller {
         $nama = $this->input->post("nama");
         $hp = $this->input->post("no_hp");
         $email = $this->input->post("email");
-        $this->mregistrasi->insert_new_register($nim,$nama,$hp,$email);
+        $tema = $this->input->post("tema");
+        $url = $this->input->post("url");
+        $this->mregistrasi->insert_new_register($nim,$nama,$hp,$email,$tema,$url);
     }
-
+    
 }
