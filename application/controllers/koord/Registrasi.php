@@ -32,7 +32,13 @@ class Registrasi extends CI_Controller {
             $this->load->model('koord/mmahasiswa','mahasiswa');
             //generate password
             $this->load->helper('randompwd');
-            $generated_password = generate_random_password();
+            //uncomment untuk produksi
+            //$generated_password = generate_random_password();
+            //menambahkan salted teks
+            $generated_password = "a"; //generated password selama development
+            $generated_password = "salted".$generated_password;
+            $generated_password = md5($generated_password);
+            
             //buat id akun
             $id_akun = uniqid();
             //insert into tabel akun
