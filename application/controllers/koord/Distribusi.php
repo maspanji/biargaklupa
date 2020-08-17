@@ -67,13 +67,22 @@ class Distribusi extends CI_Controller {
         $id_dosen = $this->uri->segment(4);
         $data['list_mahasiswa'] = $this->mbimbingan->get_all_bimbingan_by_id_dosen($id_dosen);
         $data['nama_dosen'] = $this->mdosen->get_dosen_by_id_dosen($id_dosen);
+        $data['data_dosen'] = $this->mdosen->get_all_dosen();
         
         //menuju ke halaman
         $this->load->view('koord/dashboard-head');
         $this->load->view('koord/distribusi_per_dosen_detail', $data);
+        $this->load->view('koord/modal_redistribusi');
         $this->load->view('koord/dashboard-foot');
     }
-
-    //mendapatkan mahasiswa bimbingan dan nama dosennya
-    //"SELECT mahasiswa.nim, mahasiswa.nama , dosen.nama FROM mahasiswa JOIN bimbingan JOIN dosen ON mahasiswa.id_mhs = bimbingan.mahasiswa_id_mhs AND dosen.id_dosen=bimbingan.dosen_id_dosen"
+    
+    //proses distribusi ulang mahasiswa bimbingan !
+    public function proses_redistribusi(){
+        $id_periode = $this->input->post("id_periode");
+        $id_mhs = $this->input->post("id_mhs");
+        $id_dosen = $this->input->post("id_dosen");
+        //proses redistribusi
+        $this->load->model('koord/mbimbingan','mbimbingan');
+        $this->mbimbingan->update_dosen_pembimbing($id_periode,$id_mhs,$id_dosen);
+    }
 }

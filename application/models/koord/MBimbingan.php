@@ -22,9 +22,17 @@ class MBimbingan extends CI_Model {
         $query_string = "SELECT mahasiswa.id_mhs, mahasiswa.nim, mahasiswa.nama, dosen.nama as 'pembimbing', mahasiswa.tema_skripsi "
                 . "FROM mahasiswa JOIN bimbingan JOIN dosen "
                 . "ON mahasiswa.id_mhs = bimbingan.mahasiswa_id_mhs AND dosen.id_dosen=bimbingan.dosen_id_dosen "
-                . "AND dosen.id_dosen=".$id_dosen;
+                . "AND dosen.id_dosen=" . $id_dosen;
         $query = $this->db->query($query_string);
         return $query->result();
+    }
+
+    //mengupdate dosen pembimbing berdasarkan periode dan id mahasiswa
+    public function update_dosen_pembimbing($id_periode, $id_mhs, $id_dosen) {
+        $this->db->set('dosen_id_dosen', $id_dosen);
+        $this->db->where('mahasiswa_id_mhs', $id_mhs);
+        $this->db->where('periode_idperiode', $id_periode);
+        $this->db->update('bimbingan');
     }
 
 }

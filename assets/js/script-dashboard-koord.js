@@ -66,8 +66,34 @@ $('#distribusikan-button').click(function (e) {
                     alert("Sukses mendistribusikan mahasiswa !");
                     location.reload();
                 }).fail(function (e) {
-                    alert("Gagal mendistribusikan mahasiswa !");
+            alert("Gagal mendistribusikan mahasiswa !");
         });
     }
+
+})
+
+$('a.tombol-redistribusi').on("click", function (e) {
+    var mhs_nama = $(this).attr("value");
+    var mhs_id = $(this).attr("id");
+    $("#nama_mhs").empty();
+    $("#nama_mhs").append(mhs_nama + " didistribusikan ulang ke:");
+    $("#id_mhs_in_modal").empty();
+    $("#id_mhs_in_modal").val(mhs_id);
+    $('#modal-redistribusi').modal();
+})
+
+$('#tombol-redistribusi').on("click", function (e) {
+    var periode_id = $("#id_periode").val();
+    var mhs_id = $("#id_mhs_in_modal").val();
+    var id_dosen_baru = $("#pembimbing").val();
+
+    var url = site_url + "/koord/distribusi/proses_redistribusi";
+    $.post(url, {id_periode: periode_id, id_mhs: mhs_id, id_dosen: id_dosen_baru})
+            .done(function (data) {
+                alert("Sukses mendistribusikan ulang mahasiswa");
+                location.reload();
+            }).fail(function (e) {
+        alert("Gagal mendistribusikan ulang mahasiswa !");
+    });
 
 })
