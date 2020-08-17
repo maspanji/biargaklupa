@@ -24,15 +24,22 @@ class Login extends CI_Controller {
         $password = md5($password);
 
         $result = $this->mauth->cek_akun($username, $password);
-        if ($result == null) {
+        if (empty($result)) {
             echo "akun tidak ditemukan !";
         } else {
             $role = $result->role;
             $id_akun = $result->id_akun;
-
+            //ambil periode aktif untuk session
+            $this->load->model('koord/mperiode', 'mperiode');
+            $periode_aktif = $this->mperiode->get_periode_aktif();
+            $keterangan_periode = $periode_aktif->keterangan;
+            $idperiode = $periode_aktif->idperiode;
+            
             $this->load->helper('url');
             //register session
-            $data = ['role' => $role, 'id_akun' => $id_akun, 'username' => $username];
+            $data = [
+                'role' => $role, 'id_akun' => $id_akun, 'username' => $username,
+                'keterangan_periode' => $keterangan_periode,'id_periode'=>$idperiode];
             $this->session->set_userdata($data);
 
             //redirect ke masing-masing halaman
@@ -44,11 +51,11 @@ class Login extends CI_Controller {
         }
     }
 
-
     public function session_test() {
-        echo $this->session->__get('role')."<br>";
-        echo $this->session->__get('id_akun')."<br>";
-        echo $this->session->__get('username')."<br>";
+        echo $this->session->__get('role') . "<br>";
+        echo $this->session->__get('id_akun') . "<br>";
+        echo $this->session->__get('username') . "<br>";
+        echo $this->session->__get('id_mhs') . "<br>";
     }
 
     public function destroy_session() {

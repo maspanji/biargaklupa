@@ -36,8 +36,38 @@ $('a.tombol-setujui').on("click", function (e) {
             .done(function (data) {
                 alert("Status verifikasi sudah disetujui !");
                 location.reload();
-            }).fail(function(e){
-                alert("gagal membuat akun !"+e);
-            });
+            }).fail(function (e) {
+        alert("gagal membuat akun !" + e);
+    });
+
+})
+
+//untuk tombol distribusi mahasiswa
+$('#distribusikan-button').click(function (e) {
+    //mendapatkan id mahasiswa yang terpilih.
+    var mhs_distribusi_terpilih = new Array();
+    $('input[name="mhs_distribusi"]:checked').each(function () {
+        mhs_distribusi_terpilih.push(this.value);
+    });
+
+    if (mhs_distribusi_terpilih.length == 0) {
+        alert("Pilih mahasiswa yang akan didistribusikan !");
+    } else {
+        //mendapatkan periode id
+        var periode_id = $('input[name="id_periode"]').val();
+
+        //mendapatkan dosen id
+        var dosen_id = $('select[name="pembimbing"]').val();
+
+        //simpan ke database pakai ajax
+        var url = site_url + "/koord/distribusi/proses_distribusi_baru";
+        $.post(url, {id_dosen: dosen_id, id_periode: periode_id, list_id_mhs: mhs_distribusi_terpilih})
+                .done(function (data) {
+                    alert("Sukses mendistribusikan mahasiswa !");
+                    location.reload();
+                }).fail(function (e) {
+                    alert("Gagal mendistribusikan mahasiswa !");
+        });
+    }
 
 })

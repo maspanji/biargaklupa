@@ -11,5 +11,11 @@ class MPeriode extends CI_Model {
             echo "Gagal memasukkan data !";
         }
     }
+    
+    function get_periode_aktif(){
+        $this->db->order_by('tanggal_ditambahkan','DESC');
+        $query = $this->db->get('periode');
+        return $query->row();
+    }
 
 }

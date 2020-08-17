@@ -25,10 +25,11 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Setup
+                            Distribusi Pembimbing
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="<?php echo base_url() ?>index.php/koord/periode" >Atur Periode Tugas Akhir</a>
+                            <a class="dropdown-item" href="<?php echo base_url() ?>index.php/koord/distribusi/baru" >Distribusi Baru</a>
+                            <a class="dropdown-item" href="<?php echo base_url() ?>index.php/koord/distribusi/lihat" >Distribusi Per Dosen</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -37,6 +38,14 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="<?php echo base_url() ?>index.php/koord/registrasi" >Verifikasi Registrasi Baru</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pengaturan
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="<?php echo base_url() ?>index.php/koord/periode" >Atur Periode Tugas Akhir</a>
                         </div>
                     </li>
                     <li class="nav-item active">

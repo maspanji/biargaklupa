@@ -21,7 +21,7 @@ class Registrasi extends CI_Controller {
     public function verifikasi() {
         $nim = $this->input->post("id_mhs");
         $status_verifikasi = $this->input->post("status");
-        if (status == "0") {
+        if ($status_verifikasi == "0") {
             //jika mahasiswa tidak terverifikasi
             $this->load->model('koord/mregistrasi', 'mregistrasi');
             $this->mregistrasi->verifikasi_mhs($nim, $status_verifikasi);
